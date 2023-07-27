@@ -1,0 +1,33 @@
+<?php
+
+// Đường dẫn đến thư mục
+$dir_path = 'learn_php/';
+
+// Tên file
+$file_name = 'data.txt';
+
+// Tạo thư mục nếu chưa tồn tại
+if (!file_exists($dir_path)) {
+    mkdir($dir_path, 0777, true);
+}
+
+// Đường dẫn đến file
+$file_path = $dir_path . $file_name;
+
+// Kiểm tra file có cho phép ghi hay không
+if (!is_writable($file_path)) {
+    echo 'File không cho phép ghi!';
+    exit;
+}
+
+// Mở file để ghi
+$file = fopen($file_path, 'w');
+
+// Ghi nội dung vào file
+fwrite($file, 'xin chào');
+
+// Đóng file
+fclose($file);
+
+// Xoá file
+unlink($file_path);
